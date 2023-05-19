@@ -1,0 +1,22 @@
+#:import style gui.style
+<LetterCaseNodeBody>
+    width: dp(120)
+    height: dp(115)
+    InputField:
+        height: dp(10)
+        size_hint: 1, None
+        id: input
+        label_text:'text in'
+    LabeledCheckBox:
+        label_text: 'upper'
+        is_checked: root.is_upper
+        on_is_checked: root.is_upper = args[1]
+    LabeledCheckBox:
+        label_text: 'lower'
+        is_checked: root.is_lower
+        on_is_checked: root.is_lower = args[1]
+    OutputField:
+        height: dp(20)
+        size_hint: 1, None
+        id: output
+        label_text:'text out'

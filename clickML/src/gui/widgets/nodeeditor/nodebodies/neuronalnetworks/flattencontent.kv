@@ -1,0 +1,16 @@
+<FlattenContent>
+    size_hint: 1, None
+    height: dp(100)
+    spacing: dp(5)
+    LabeledCheckBox:
+        size_hint: 1, None
+        height: dp(25)
+        is_checked: root.data_format_enabled
+        on_is_checked: root.data_format_enabled = args[1]
+        label_text: 'DateTime Format (Optional)'
+    MultiSelection:
+        height: dp(25)
+        size_hint: 1, None
+        items: [['channel_last', 'Channel Last'], ['channel_first', 'Channel First']]
+        selected_item: root.data_format
+        on_selected_item: root.data_format = args[1]

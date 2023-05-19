@@ -1,0 +1,31 @@
+QWidget {
+    background-color: darkblue;
+    opacity: 0.5;
+
+}
+
+QListWidget{
+    background-color: lightblue;
+
+}
+
+QPushButton{
+    background-color: red;
+    color: white;
+    padding: 10px 10px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+QPushButton:hover{
+    background-color: green;
+}
+
+QLabel{
+    color: white;
+
+}
+
+QListWidgetItem{
+    color: white;
+}

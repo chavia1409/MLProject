@@ -1,0 +1,52 @@
+<GenerateWordsNodeBody>
+    width: dp(200)
+    height: dp(170)
+    InputField:
+        height: dp(10)
+        size_hint: 1, None
+        id: model_input
+        label_text: 'text generation model'
+    InputField:
+        height: dp(20)
+        size_hint: 1, None
+        id: init_chars_input
+        label_text: 'initialization input'
+    GridLayout:
+        height: dp(25)
+        size_hint: 1, None
+        cols: 2
+        Label:
+            height: dp(25)
+            size_hint: 1, None
+            text: 'mode '
+            halign: "right"
+            valign: 'middle'
+            text_size: self.size
+        MultiSelection:
+            height: dp(25)
+            size_hint: 1, None
+            items: [['first', 'first'], ['last', 'last'], ['random', 'random']]
+            selected_item: root.init_words
+            on_selected_item: root.init_words = args[1]
+    Label:
+        height: dp(30)
+        size_hint: 1, None
+        text: 'generated text length by  ' + str(int(root.ids.slider.value)) + ' words'
+        halign: "left"
+        valign: 'middle'
+        text_size: self.size
+    MDSlider:
+        height: dp(20)
+        size_hint: 1, None
+        color: 255, 255, 255, 1
+        hint: False
+        id: slider
+        min: 1
+        max: 3000
+        value: root.number_of_words
+        on_value: root.number_of_words = args[1]
+    OutputField:
+        height: dp(20)
+        size_hint: 1, None
+        id: output
+        label_text: 'out'

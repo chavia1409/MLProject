@@ -1,0 +1,74 @@
+<DivideCharsByLengthNodeBody>
+    width: dp(200)
+    height: dp(225)
+    InputField:
+        size_hint: 1, None
+        height: dp(10)
+        id: input_field
+        label_text: "input text"
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint: 1, None
+        height: dp(35)
+        Label:
+            text:"sequence length:"
+            halign: "left"
+        TextInput:
+            id: textinput
+            size_hint: None, None
+            height: dp(30)
+            width: dp(40)
+            canvas.before:
+                Color:
+                    rgba:root.input_text_background
+                Line:
+                    width: 0.5
+                    rectangle: self.x, self.y, self.width, self.height
+            halign: "center"
+            text: str(root.seq_length)
+            multiline: False
+            background_color: (0,0,0,0)
+            on_text_validate: root.set_seq_length()
+            on_touch_down: root.change_text_input_color(((124/255, 252/255, 0, 1)))
+    MDBoxLayout:
+        orientation: 'horizontal'
+        height: dp(25)
+        height: dp(25)
+        size_hint:  None, None
+        MDFlatButton:
+            text: "+"
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            on_press: root.seq_length += 1
+            on_release:root.change_text_input_color(((1, 1, 1, 1)))
+        MDFlatButton:
+            text: "-"
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            on_press: root.seq_length -= 1
+            on_release:root.change_text_input_color(((1, 1, 1, 1)))
+    OutputField:
+        size_hint: 1, None
+        height: dp(20)
+        id: output_field
+        label_text: "prediction"
+    OutputField:
+        size_hint: 1, None
+        height: dp(20)
+        id: output_field_2
+        label_text: "input data"
+    OutputField:
+        size_hint: 1, None
+        height: dp(20)
+        id: output_field_3
+        label_text: "output data"
+    OutputField:
+        size_hint: 1, None
+        height: dp(20)
+        id: output_field_4
+        label_text: "input shape"
+    OutputField:
+        size_hint: 1, None
+        height: dp(20)
+        id: output_field_5
+        label_text: "output shape"

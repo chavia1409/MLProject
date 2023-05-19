@@ -1,0 +1,7 @@
+ClickML is a project aimed at streamlining the development process of machine learning projects by providing a graphical user interface (GUI) that enables the creation of flexible project structures through a simple "drag and drop" mechanism. The project focuses on three main steps: data extraction, model training, and evaluation. By visually representing these steps, Thema facilitates the understanding and organization of the project workflow.
+
+The goal of ClickML is to provide a user-friendly interface inspired by modern ML libraries such as scikit-learn, TensorFlow, and PyTorch. Users can easily define and connect various project components, including data extraction, preprocessing, and model creation. Once the workflow diagram is created, Thema allows users to translate it into Python code, generating a script that automates the execution of different project steps. This script can serve as a foundation for further customization and experimentation.
+
+To enhance the flexibility of using clickML, the project also supports saving and loading workflow diagrams. This feature enables users to save their project structures for future use or share them with collaborators, promoting collaboration and reproducibility.
+
+Overall, ClickML simplifies the process of building machine learning projects by providing an intuitive GUI, code generation, and diagram persistence functionalities. It empowers users to easily organize their projects, accelerate the development cycle, and foster collaboration within the machine learning community.

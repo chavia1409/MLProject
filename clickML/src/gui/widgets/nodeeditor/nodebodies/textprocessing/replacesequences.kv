@@ -1,0 +1,43 @@
+<ReplaceSequencesNodeBody>
+    width: dp(200)
+    height: dp(190)
+    InputField:
+        height: dp(10)
+        size_hint: 1, None
+        id: input_field
+        label_text: 'input text'
+    GridLayout:
+        height: dp(130)
+        size_hint: 1, None
+        rows: 5
+        Label:
+            height: dp(30)
+            size_hint: 1, None
+            bold: True
+            color: 237, 153, 64, 1
+            text: '[ i ] seperate by ;'
+        Label:
+            size_hint: 1, None
+            height: dp(25)
+            text: 'original'
+        TextInput:
+            size_hint: 1, None
+            height: dp(25)
+            id: original
+            text:';'.join(str(x) for x in root.sequences_original)
+            on_text: root.sequences_original = original.text.split(';')
+        Label:
+            size_hint: 1, None
+            height: dp(25)
+            text: 'replace'
+        TextInput:
+            size_hint: 1, None
+            height: dp(25)
+            id: toreplace
+            text:';'.join(str(x) for x in root.sequences_replace)
+            on_text: root.sequences_replace = toreplace.text.split(';')
+    OutputField:
+        height: dp(20)
+        size_hint: 1, None
+        id: output_field
+        label_text:'output text'

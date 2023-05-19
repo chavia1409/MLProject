@@ -1,0 +1,76 @@
+#: import DEFAULT common.models.component_descriptors.component_constants.DEFAULT
+<SaveTextNodeBody>
+    width: dp(200)
+    height: dp(205)
+    InputField:
+        size_hint: 1, None
+        height: dp(10)
+        id: input_field
+        label_text: 'text input'
+    NodeBodyTextField:
+        halign: "right"
+        label_text: '   path '
+        field_text: root.path
+        on_field_text: root.path = args[1]
+    Button:
+        height: dp(25)
+        size_hint: 1, None
+        text: 'select path'
+        on_press: root.context.select_path()
+    GridLayout:
+        height: dp(25)
+        size_hint: 1, None
+        cols: 2
+        Label:
+            height: dp(25)
+            size_hint: 1.5, None
+            halign: "right"
+            valign: 'middle'
+            text_size: self.size
+            text: 'encoding  '
+        MultiSelection:
+            height: dp(25)
+            size_hint: 1, None
+            items: [[DEFAULT, 'default'], ['ascii', 'ascii'], ['utf_8', 'utf_8'], ['utf_7', 'utf_7'], ['utf_16', 'utf_16']]
+            selected_item: root.encoding
+            on_selected_item: root.encoding = args[1]
+    GridLayout:
+        size_hint: 1, None
+        height: dp(25)
+        cols: 2
+        Label:
+            height: dp(25)
+            size_hint: 1.5, None
+            halign: "right"
+            valign: 'middle'
+            text_size: self.size
+            text: 'newline mode  '
+        MultiSelection:
+            height: dp(25)
+            size_hint: 1, None
+            items: [[DEFAULT, 'default'], ['None', 'none'], ['', 'empty'], ['\n', '\\n'], ['\r', '\\r'], ['\r\n', '\\r\\n']]
+            selected_item: root.newline
+            on_selected_item: root.newline = args[1]
+    GridLayout:
+        height: dp(25)
+        size_hint: 1, None
+        cols: 2
+        Label:
+            height: dp(25)
+            size_hint: 0.4, None
+            halign: "right"
+            valign: 'middle'
+            text_size: self.size
+            text: 'errors  '
+        MultiSelection:
+            height: dp(25)
+            size_hint: 1, None
+            items: [[DEFAULT, 'default'], ['strict', 'strict'], ['backslashreplace', 'backslashreplace'], ['ignore', 'ignore'], ['namereplace', 'namereplace'], ['replace', 'replace'], ['xmlcharrefreplace', 'xmlcharrefreplace']]
+            selected_item: root.errors
+            on_selected_item: root.errors = args[1]
+    OutputField:
+        size_hint: 1, None
+        height: dp(20)
+        id: output_field
+        label_text: 'text output'
+    

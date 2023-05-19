@@ -1,0 +1,27 @@
+<DeleteSequencesNodeBody>
+    width: dp(200)
+    height: dp(110)
+    InputField:
+        height: dp(10)
+        size_hint: 1, None
+        id:input_field
+        label_text: 'text'
+
+    GridLayout:
+        height: dp(50)
+        size_hint: 1, None
+        rows: 2
+        Label:
+            color: 237, 153, 64, 1
+            text: '[ i ] seperate by ;'
+        TextInput:
+            height: dp(40)
+            id: delete
+            text:';'.join(str(x) for x in root.sequences)
+            on_text: root.sequences = delete.text.split(';')
+
+    OutputField:
+        height: dp(20)
+        size_hint: 1, None
+        id:output_field
+        label_text: 'deleted text'

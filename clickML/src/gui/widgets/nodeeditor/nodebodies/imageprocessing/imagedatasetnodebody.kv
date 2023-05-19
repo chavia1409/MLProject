@@ -1,0 +1,282 @@
+<ImageDatasetNodeBody>
+
+    width: dp(250)
+    height: dp(620)
+    spacing:dp(5)
+
+    NodeBodyTextField:
+        size_hint:1,None
+        height:self.height
+        label_text: 'Path: '
+        field_text: root.directory
+        height: dp(30)
+        on_field_text: root.directory = args[1]
+    FocusWidget:
+        focus_color: (120 / 255, 120 / 255, 128 / 255, 1)
+        unfocus_color: 0,0,0,0
+        size_hint:1, None
+        height: dp(30)
+        MDRectangleFlatIconButton:
+            size_hint:1,None
+            height: dp(25)
+            icon: "folder"
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            line_color:0,0,0,0
+            size_hint: 1, None
+            text: 'Select File'
+            on_press: root.context.select_path()
+    MDBoxLayout:
+        orientation:"horizontal"
+        size_hint: 1, None
+        height:dp(30)
+        Label:
+
+            halign: "left"
+            valign: 'middle'
+            text_size: self.size
+            text: 'Labels: '
+        MultiSelection:
+
+            items: [['inferred','inferred']]
+            selected_item: root.labels
+            on_selected_item: root.labels = args[1]
+
+    GridLayout:
+        height:dp(30)
+        size_hint: 1, None
+        cols: 2
+        Label:
+            height: dp(30)
+            size_hint: 1, None
+            halign: "left"
+            valign: 'middle'
+            text_size: self.size
+            text: 'Label Mode:'
+        MultiSelection:
+            height: dp(30)
+            size_hint: 1, None
+            items: [['int','int'],['binary','binary'],['categorical','categorical']]
+            selected_item: root.label_mode
+            on_selected_item: root.label_mode = args[1]
+    MDBoxLayout:
+        orientation:"horizontal"
+        height:dp(30)
+        size_hint: 1, None
+        Label:
+            height: dp(30)
+            size_hint: 1, None
+            halign: "left"
+            valign: 'middle'
+            text_size: self.size
+            text: 'color mode: '
+        MultiSelection:
+            height: dp(30)
+            size_hint: 1, None
+            items: [["grayscale","grayscale"],["rgb","rgb"], ["rgba", "rgba"]]
+            selected_item: root.color_mode
+            on_selected_item: root.color_mode = args[1]
+    MDBoxLayout:
+        orientation:"horizontal"
+        size_hint: 1, None
+        height:dp(30)
+        Label:
+            height: dp(30)
+            size_hint: 1, None
+            halign: "left"
+            valign: 'middle'
+            text_size: self.size
+            text: 'interpolation: '
+        MultiSelection:
+            height: dp(30)
+            size_hint: 1, None
+            items: [['bilinear','bilinear'] , ['nearest', 'nearest'], ['bicubic','bicubic'], ['area','area'], ['lanczos3', 'lanczos3'], ['lanczos5','lanczos5'], ['gaussian','gaussian'],['mitchellcubic','mitchellcubic']]
+            selected_item: root.interpolation
+            on_selected_item: root.interpolation = args[1]
+
+    Label:
+        size_hint:1, None
+        height:dp(30)
+        text:"batch size: "
+        halign:"left"
+    MDBoxLayout:
+        orientation: 'horizontal'
+        height: dp(30)
+        size_hint: 1, None
+        spacing:dp(10)
+        FocusWidget:
+            focus_color: (120 / 255, 120 / 255, 128 / 255, 1)
+            unfocus_color: 0,0,0,0
+            size_hint:None, None
+            height: dp(30)
+            width:dp(50)
+            MDRectangleFlatIconButton:
+                size_hint:None, None
+                height: dp(30)
+                width:dp(50)
+                icon:"minus"
+                line_color:0,0,0,0
+                valign:"center"
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+                on_press: root.batch_size -= 1
+        FocusWidget:
+            focus_color: (220 / 255, 220 / 255, 228 / 255, 1)
+            unfocus_color: (80/255,80/255,80/255,1)
+            size_hint:1, None
+            height: dp(30)
+
+
+            TextInput:
+                id: batch_input
+                size_hint: 1, None
+                height: dp(30)
+                canvas.before:
+                    Color:
+                        rgba:1,1,1,1
+                halign: "center"
+                text: str(root.batch_size)
+                multiline: False
+                background_normal:""
+                background_color: (80/255,80/255,80/255,1)
+                on_text_validate: root.set_batch_size()
+
+        FocusWidget:
+            focus_color: (120 / 255, 120 / 255, 128 / 255, 1)
+            unfocus_color: 0,0,0,0
+            size_hint:None, None
+            height: dp(30)
+            width:dp(50)
+            MDRectangleFlatIconButton:
+                size_hint:None, None
+                height: dp(30)
+                width:dp(50)
+                height: dp(30)
+                icon:"plus"
+                anchor:"right"
+                line_color:0,0,0,0
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+                on_press: root.batch_size += 1
+
+
+    Label:
+        size_hint:1, None
+        height:dp(30)
+        text:"image size: "
+        halign: "left"
+        valign: 'bottom'
+
+    BoxLayout:
+        orientation: 'horizontal'
+        height: dp(40)
+        size_hint: 1, None
+        spacing:dp(4)
+        FocusWidget:
+            focus_color: (220 / 255, 220 / 255, 228 / 255, 1)
+            unfocus_color: (80/255,80/255,80/255,1)
+            size_hint:1, None
+            height: dp(30)
+            TextInput:
+                id: image_input_x
+                size_hint: 1, None
+                height: dp(30)
+                canvas.before:
+                    Color:
+                        rgba:1,1,1,1
+                halign: "center"
+                text: str(root.image_size_x)
+                multiline: False
+                background_normal:""
+                background_color: (80/255,80/255,80/255,1)
+                on_text_validate: root.set_image_size_x()
+        FocusWidget:
+            focus_color: (220 / 255, 220 / 255, 228 / 255, 1)
+            unfocus_color: (80/255,80/255,80/255,1)
+            size_hint:1, None
+            height: dp(30)
+            TextInput:
+                id: image_input_y
+                size_hint: 1, None
+                height: dp(30)
+                canvas.before:
+                    Color:
+                        rgba:1,1,1,1
+
+                text: str(root.image_size_y)
+                multiline: False
+                halign: "center"
+                background_normal:""
+                background_color: (80/255,80/255,80/255,1)
+                on_text_validate: root.set_image_size_y()
+
+    BoxLayout:
+        orientation: 'horizontal'
+        height: dp(40)
+        size_hint: 1, None
+        spacing:dp(4)
+        Label:
+            size_hint:1, None
+            height:dp(30)
+            text:"validation split: "
+            halign:"left"
+        FocusWidget:
+            focus_color: (220 / 255, 220 / 255, 228 / 255, 1)
+            unfocus_color: (80/255,80/255,80/255,1)
+            size_hint:1, None
+            height: dp(30)
+            TextInput:
+                id:validation_split_input
+                size_hint: 1, None
+                height: dp(30)
+                canvas.before:
+                    Color:
+                        rgba:1,1,1,1
+                halign: "center"
+                text: str(root.validation_split)
+                multiline: False
+                background_normal:""
+                background_color: (80/255,80/255,80/255,1)
+                on_text_validate: root.set_validation_split()
+    LabeledCheckBox:
+        size_hint: 1, None
+        height:dp(30)
+        unselected_color:1,1,1,1
+        is_checked: root.shuffle
+        on_is_checked: root.shuffle = args[1]
+        label_text: 'shuffle'
+    LabeledCheckBox:
+        size_hint: 1, None
+        height:dp(30)
+        unselected_color:1,1,1,1
+        is_checked: root.crop_to_aspect_ratio
+        on_is_checked: root.crop_to_aspect_ratio = args[1]
+        label_text: 'crop_to_aspect_ratio'
+
+
+
+
+    OutputField:
+        id: net_input
+        height:dp(25)
+        halign:"left"
+        size_hint: 1, None
+        label_text: 'training data'
+    OutputField:
+        id: net_output
+        height:dp(25)
+        halign:"left"
+        size_hint: 1, None
+        label_text: 'validation data'
+    OutputField:
+        id: input_shape
+        height:dp(25)
+        halign:"left"
+        size_hint: 1, None
+        label_text: 'input shape'
+    OutputField:
+        id: output_shape
+        height:dp(25)
+        halign:"left"
+        size_hint: 1, None
+        label_text: 'output shape'

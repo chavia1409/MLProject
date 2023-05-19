@@ -1,0 +1,31 @@
+<MaxPool2DContent>
+    size_hint: 1, None
+    height: dp(100)
+    spacing: dp(5)
+    Label:
+        height: dp(25)
+        size_hint: 1, None
+        halign: "left"
+        valign: 'middle'
+        text_size: self.size
+        text: 'Pool Size'
+    GridLayout:
+        height: dp(25)
+        size_hint: 1, None
+        cols: 2
+        TextInput:
+            height: dp(25)
+            size_hint: 1, None
+            text: root.pool_size_one
+            on_text: root.pool_size_one = args[1]
+        TextInput:
+            height: dp(25)
+            size_hint: 1, None
+            text: root.pool_size_two
+            on_text: root.pool_size_two = args[1]
+    LabeledCheckBox:
+        height: dp(25)
+        size_hint: 1, None
+        is_checked: root.two_pool_size_values
+        on_is_checked: root.two_pool_size_values = args[1]
+        label_text: 'Diffrent Values'

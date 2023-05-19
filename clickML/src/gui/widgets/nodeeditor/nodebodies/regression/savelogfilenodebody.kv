@@ -1,0 +1,17 @@
+<SaveLogfileNodeBody>
+    width: dp(200)
+    height: dp(95)
+    InputField:
+        size_hint: 1, None
+        height: dp(10)
+        id: input_field
+        label_text: '[adapter] input'
+    NodeBodyTextField:
+        label_text: '    path '
+        field_text: root.filePath
+        on_field_text: root.filePath = args[1]
+    Button:
+        height: dp(25)
+        size_hint: 1, None
+        text: 'select path'
+        on_press: root.context.select_path()

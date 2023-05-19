@@ -1,0 +1,122 @@
+<TrainSequentialNodeBody>
+    width: dp(320)
+    InputField:
+        id: training_net_input
+        label_text: 'train_data'
+    InputField:
+        id: training_net_output
+        label_text: 'validation_data'
+    InputField:
+        id: model_input
+        label_text: 'model to train'
+    GridLayout:
+        size_hint: 1, None
+        height: dp(25)
+        cols: 2
+        LabeledCheckBox:
+            id: batch_size_checkbox
+            is_checked: root.batch_size_enabled
+            on_is_checked: root.batch_size_enabled = args[1]
+            height: dp(25)
+            label_text: 'Batch Size (Optional)'
+        TextInput:
+            size_hint: None, None
+            width: dp(50)
+            height: dp(25)
+            disabled: not root.ids.batch_size_checkbox.is_checked
+            text: root.batch_size
+            on_text: root.batch_size = args[1]
+    GridLayout:
+        size_hint: 1, None
+        height: dp(25)
+        cols: 2
+        LabeledCheckBox:
+            id: epochs_checkbox
+            size_hint: 1, None
+            height: dp(25)
+            is_checked: root.epochs_enabled
+            on_is_checked: root.epochs_enabled = args[1]
+            label_text: 'Epochs (Optional)'
+        TextInput:
+            size_hint: None, None
+            width: dp(50)
+            height: dp(25)
+            disabled: not root.ids.epochs_checkbox.is_checked
+            text: root.epochs
+            on_text: root.epochs = args[1]
+    GridLayout:
+        size_hint: 1, None
+        height: dp(25)
+        cols: 2
+        Label:
+            height: dp(25)
+            size_hint: 1, None
+            halign: "left"
+            valign: 'middle'
+            text_size: self.size
+            text: 'Verbose (Optional)'
+        MultiSelection:
+            height: dp(25)
+            size_hint: 1, None
+            items: [[DEFAULT, 'Not selected'], [0, 'Silent'], [1, 'Progress bar'], [2, 'one line per epoch']]
+            selected_item: root.selected_verbose_mode
+            on_selected_item: root.selected_verbose_mode = args[1]
+    GridLayout:
+        size_hint: 1, None
+        height: dp(50)
+        rows: 2
+        LabeledCheckBox:
+            height: dp(25)
+            size_hint: 1, None
+            id: validation_split_checkbox
+            is_checked: root.validation_split_enabled
+            on_is_checked: root.validation_split_enabled = args[1]
+            label_text: 'Validation Split (Optional)'
+        GridLayout:
+            height: dp(25)
+            cols: 4
+            Label:
+                height: dp(25)
+                width: dp(30)
+                size_hint: None, None
+                halign: "left"
+                valign: 'middle'
+                text_size: self.size
+                text: str(100 - int(root.ids.validation_split_slider.value) )
+            Label:
+                height: dp(25)
+                size_hint: None, None
+                halign: "left"
+                valign: 'middle'
+                text_size: self.size
+                text: 'training'
+            MDSlider:
+                id: validation_split_slider
+                height: dp(25)
+                size_hint: 1, None
+                min: 0
+                max: 100
+                disabled: not root.ids.validation_split_checkbox.is_checked
+                value: root.validation_split_percent
+                on_value: root.validation_split_percent = args[1]
+            Label:
+                height: dp(25)
+                width: dp(70)
+                size_hint: None, None
+                halign: "right"
+                valign: 'middle'
+                text_size: self.size
+                text: 'validation'
+
+    LabeledCheckBox:
+        label_text: 'Plot Progress'
+        is_checked: root.plot_progress
+        on_is_checked: root.plot_progress = args[1]
+    LabeledCheckBox:
+        label_text: 'Save Weights'
+        is_checked: root.save_weights
+        on_is_checked: root.save_weights = args[1]
+
+    OutputField:
+        id: model_output
+        label_text: 'model'

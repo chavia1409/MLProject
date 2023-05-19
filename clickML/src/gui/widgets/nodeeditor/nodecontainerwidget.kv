@@ -1,0 +1,31 @@
+#:import NodeHeader gui.widgets.nodeeditor.nodeheader
+#:import utils kivy.utils
+#:import style gui
+<NodeContainerWidget>
+    size_hint: None, None
+    drag_rectangle: self.x, self.y + self.height - dp(30), self.width, 100
+    drag_timeout: 10000000
+    drag_distance: 0
+    #width: max([c.width for c in self.children])
+    height: sum([c.height for c in self.children])
+    canvas.before:
+        Color:
+            rgb: style.node_body_header_color
+        RoundedRectangle:
+            pos: self.x, self.y + self.height - dp(50)
+            size: self.width, dp(50)
+            radius: [(10, 10), (10, 10), (0, 0), (0, 0)]
+        Color:
+            rgba: root.line
+
+        RoundedRectangle:
+            pos: self.x, self.y + self.height - dp(50)
+            size: self.width, dp(50)
+            radius: [(10, 10), (10, 10), (0, 0), (0, 0)]
+
+
+    rows: 2
+    cols: 1
+    NodeHeader:
+        id: header
+        size_hint: 1, None

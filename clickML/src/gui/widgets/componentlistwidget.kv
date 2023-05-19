@@ -1,0 +1,13 @@
+<ComponentListWidget>
+    orientation: 'vertical'
+    size: 100, 30
+    spacing: 5
+    valign: 'top'
+<TreeView>:
+    ScrollView:
+        canvas.before:
+        # Color:
+        #     rgba: 0, 0, 0, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size

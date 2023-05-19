@@ -1,0 +1,45 @@
+<DropoutContent>
+    size_hint: 1, None
+    height: dp(100)
+    width: dp(100)
+    spacing: dp(5)
+    Label:
+        height: dp(25)
+        size_hint: 1, None
+        halign: "left"
+        valign: 'middle'
+        text_size: self.size
+        text: 'Rate'
+    GridLayout:
+        size_hint: 1, None
+        height: dp(25)
+        cols: 2
+        Label:
+            height: dp(25)
+            width: dp(30)
+            size_hint: None, None
+            halign: "left"
+            valign: 'middle'
+            text_size: self.size
+            text: str(int(root.ids.rate_slider.value))
+        MDSlider:
+            id: rate_slider
+            height: dp(25)
+            size_hint: 1, None
+            min: 0
+            max: 100
+            value: root.rate_in_percent
+            on_value: root.rate_in_percent = args[1]
+    LabeledCheckBox:
+        id: seed_checkbox
+        size_hint: 1, None
+        height: dp(25)
+        is_checked: root.seed_enabled
+        on_is_checked: root.seed_enabled = args[1]
+        label_text: 'Seed (Optional)'
+    TextInput:
+        disabled: not seed_checkbox.is_checked
+        height: dp(25)
+        size_hint: 1, None
+        text: root.seed
+        on_text: root.seed = args[1]

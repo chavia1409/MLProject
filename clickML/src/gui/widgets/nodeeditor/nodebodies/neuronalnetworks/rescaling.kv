@@ -1,0 +1,130 @@
+<RescalingContent>
+    size_hint: 1, None
+    height: dp(90)
+    spacing: dp(5)
+
+
+    MDBoxLayout:
+        orientation: 'horizontal'
+        height: dp(30)
+        size_hint: 1, None
+        spacing:dp(10)
+        Label:
+            size_hint:1, None
+            height:dp(30)
+            text:"scale: "
+            halign:"left"
+        FocusWidget:
+            focus_color: (120 / 255, 120 / 255, 128 / 255, 1)
+            unfocus_color: 0,0,0,0
+            size_hint:None, None
+            height: dp(30)
+            width:dp(50)
+            MDRectangleFlatIconButton:
+                size_hint:None, None
+                height: dp(30)
+                width:dp(40)
+                icon:"minus"
+                line_color:0,0,0,0
+                valign:"center"
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+                on_press: root.scale -= 1
+        FocusWidget:
+            focus_color: (220 / 255, 220 / 255, 228 / 255, 1)
+            unfocus_color: (80/255,80/255,80/255,1)
+            size_hint:1, None
+            height: dp(30)
+            TextInput:
+                id: scale_input
+                size_hint: 1, None
+                height: dp(30)
+                canvas.before:
+                    Color:
+                        rgba:1,1,1,1
+                halign: "center"
+                text: str(root.scale)
+                multiline: False
+                background_normal:""
+                background_color: (80/255,80/255,80/255,1)
+                on_text_validate: root.set_scale()
+
+        FocusWidget:
+            focus_color: (120 / 255, 120 / 255, 128 / 255, 1)
+            unfocus_color: 0,0,0,0
+            size_hint:None, None
+            height: dp(30)
+            width:dp(40)
+            MDRectangleFlatIconButton:
+                size_hint:None, None
+                height: dp(30)
+                width:dp(40)
+                height: dp(30)
+                icon:"plus"
+                anchor:"right"
+                line_color:0,0,0,0
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+                on_press: root.scale += 1
+    MDBoxLayout:
+        orientation: 'horizontal'
+        height: dp(30)
+        size_hint: 1, None
+        spacing:dp(10)
+        Label:
+            size_hint:1, None
+            height:dp(30)
+            text:"offset: "
+            halign:"left"
+        FocusWidget:
+            focus_color: (120 / 255, 120 / 255, 128 / 255, 1)
+            unfocus_color: 0,0,0,0
+            size_hint:None, None
+            height: dp(30)
+            width:dp(50)
+            MDRectangleFlatIconButton:
+                size_hint:None, None
+                height: dp(30)
+                width:dp(50)
+                icon:"minus"
+                line_color:0,0,0,0
+                valign:"center"
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+                on_press: root.offset -= 1
+        FocusWidget:
+            focus_color: (220 / 255, 220 / 255, 228 / 255, 1)
+            unfocus_color: (80/255,80/255,80/255,1)
+            size_hint:1, None
+            height: dp(30)
+            TextInput:
+                id: offset_input
+                size_hint: 1, None
+                height: dp(30)
+                canvas.before:
+                    Color:
+                        rgba:1,1,1,1
+                halign: "center"
+                text: str(root.offset)
+                multiline: False
+                background_normal:""
+                background_color: (80/255,80/255,80/255,1)
+                on_text_validate: root.set_offset()
+
+        FocusWidget:
+            focus_color: (120 / 255, 120 / 255, 128 / 255, 1)
+            unfocus_color: 0,0,0,0
+            size_hint:None, None
+            height: dp(30)
+            width:dp(40)
+            MDRectangleFlatIconButton:
+                size_hint:None, None
+                height: dp(30)
+                width:dp(50)
+                height: dp(30)
+                icon:"plus"
+                anchor:"right"
+                line_color:0,0,0,0
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+                on_press: root.offset += 1

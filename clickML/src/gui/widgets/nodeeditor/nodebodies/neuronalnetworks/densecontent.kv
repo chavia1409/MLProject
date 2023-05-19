@@ -1,0 +1,23 @@
+<DenseContent>
+    size_hint: 1, None
+    height: dp(100)
+    spacing: dp(5)
+    NodeBodyTextField:
+        label_text: 'units'
+        field_text: root.units
+        on_field_text: root.units = args[1]
+    LabeledCheckBox:
+        id: activation_checkbox
+        size_hint: 1, None
+        height: dp(25)
+        is_checked: root.activation_enabled
+        on_is_checked: root.activation_enabled = args[1]
+        label_text: 'activation Function (Optional)'
+    TextInput:
+        size_hint: 1, None
+        width: dp(50)
+        height: dp(25)
+        disabled: not root.ids.activation_checkbox.is_checked
+        text: root.activation
+        on_text: root.activation = args[1]
+

@@ -1,0 +1,20 @@
+#:import NumpadWidget widgets.NumpadWidget
+#:import ResultWidget widgets.ResultWidget
+#:import ResultsListWidget widgets.ResultsListWidget
+<MainScreen>
+    BoxLayout:
+        orientation: 'horizontal'
+        GridLayout:
+            rows:2
+            ResultWidget:
+                id: resultWidget
+            NumpadWidget:
+                id: numpadWidget
+                size_hint: 2, 2
+        ResultsListWidget:
+            id: resultsListWidget
+
+
+
+
+            

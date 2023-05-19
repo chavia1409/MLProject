@@ -1,0 +1,22 @@
+<ScoreNodeBody>
+    width: dp(150)
+    height: dp(85)
+    InputField:
+        height: dp(10)
+        size_hint: 1, None
+        id: regression_input
+        label_text: 'regression input'
+    LabeledCheckBox:
+        label_text: 'print'
+        is_checked: root.print
+        on_is_checked: root.print = args[1]
+    OutputField:
+        height: dp(20)
+        size_hint: 1, None
+        id: output
+        label_italic: True
+        label_text: 'output'
+
+
+
+

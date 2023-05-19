@@ -1,0 +1,52 @@
+<PrintTextNodeBody>
+    slider_text: slider_label
+    width: dp(200)
+    height: dp(105)
+    InputField:
+        height: dp(10)
+        size_hint: 1, None
+        id: input_field
+        label_text: 'text input'
+
+    GridLayout:
+        height: dp(20)
+        size_hint: 1, None
+        cols: 3
+        LabeledCheckBox:
+            id: slider_checkbox
+            size_hint: 1, None
+            height: dp(25)
+            halign: "right"
+            valign: 'middle'
+            is_checked: root.number_of_chars_enabled
+            on_is_checked: root.number_of_chars_enabled = args[1]
+            label_text: 'num of chars '
+        Label:
+            height: dp(25)
+            size_hint: 0.2, None
+            halign: "left"
+            valign: 'middle'
+            id: slider_label
+            text: str(root.number_of_chars) if slider_checkbox.is_checked else ''
+    MDSlider:
+        disabled: not slider_checkbox.is_checked
+        height: dp(20)
+        size_hint: 1, None
+        color: 255, 255, 255, 1
+        id: slider
+        min: 1
+        max: 1000
+        step: 1
+        hint: False
+        orientation: 'horizontal'
+        value: root.number_of_chars
+        on_value: root.number_of_chars = int(slider.value)
+    OutputField:
+        height: dp(20)
+        size_hint: 1, None
+        id: output_field
+        label_text: 'text output'
+
+
+
+

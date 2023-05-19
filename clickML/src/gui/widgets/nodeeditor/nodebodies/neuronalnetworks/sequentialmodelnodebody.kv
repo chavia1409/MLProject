@@ -1,0 +1,192 @@
+<SequentialModelNodeBody>
+    size_hint: None, None
+    canvas.before:
+        Color:
+            rgb: style.node_body_background_color
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [(0, 0), (0, 0), (10, 10), (10, 10)]
+    width: dp(650)
+    height: dp(300)
+    padding: dp(15)
+    spacing: dp(5)
+    cols: 3
+    StackLayout:
+        spacing: dp(5)
+        GridLayout:
+            size_hint: 1, None
+            height: dp(50)
+            rows: 2
+            cols: 1
+            LabeledCheckBox:
+                id: name_checkbox
+                size_hint: 1, None
+                height: dp(25)
+                is_checked: root.name_enabled
+                on_is_checked: root.name_enabled = args[1]
+                label_text: 'Name (Optional)'
+            TextInput:
+                disabled: not name_checkbox.is_checked
+                size_hint: 1, None
+                text: root.name
+                on_text: root.name = args[1]
+                halign: "left"
+                height: dp(25)
+
+        InputField:
+            id: input_shape
+            label_text: 'Input shape'
+        InputField:
+            id: output_shape
+            label_text: 'Output shape'
+
+        GridLayout:
+            height: dp(25)
+            size_hint: 1, None
+            cols: 2
+            Label:
+                height: dp(25)
+                size_hint: 1, None
+                halign: "left"
+                valign: 'middle'
+                text_size: self.size
+                text: 'Optimizer: '
+            MultiSelection:
+                height: dp(25)
+                size_hint: 1, None
+                items: [[DEFAULT, 'None'], ['SGD', 'Gradient descent'], ['RMSprop', 'RMSprop'], ['Adam', 'Adam'], ['Adadelta', 'Adadelta'], ['Adagrad', 'Adagrad'], ['Adamax', 'Adamax'], ['Nadam', 'Nadam'], ['Ftrl', 'Ftrl']]
+                selected_item: root.optimizer
+                on_selected_item: root.optimizer = args[1]
+
+        GridLayout:
+            size_hint: 1, None
+            height: dp(50)
+            rows: 2
+            cols: 1
+            LabeledCheckBox:
+                id: weight_file_checkbox
+                size_hint: 1, None
+                height: dp(25)
+                is_checked: root.weight_file_enabled
+                on_is_checked: root.weight_file_enabled = args[1]
+                label_text: 'Weight File (Optional)'
+            TextInput:
+                disabled: not weight_file_checkbox.is_checked
+                size_hint: 1, None
+                text: root.weight_file_path
+                on_text: root.weight_file_path = args[1]
+                halign: "left"
+                height: dp(25)
+        Button:
+            height: dp(25)
+            size_hint: 1, None
+            text: 'select File'
+            on_press: root.context.select_weight_file_path()
+            height: dp(20)
+        GridLayout:
+            height: dp(25)
+            size_hint: 1, None
+            cols: 2
+            Label:
+                height: dp(25)
+                size_hint: 1, None
+                halign: "left"
+                valign: 'middle'
+                text_size: self.size
+                text: 'Loss Function: '
+            TextInput:
+                size_hint: 1, None
+                text: root.loss_funktion
+                on_text: root.loss_funktion = args[1]
+                halign: "left"
+                height: dp(25)
+    StackLayout:
+        spacing: dp(5)
+        Label:
+            height: dp(25)
+            size_hint: 1, None
+            halign: "left"
+            valign: 'middle'
+            text_size: self.size
+            text: 'Layers'
+        StackLayout:
+            padding: dp(1)
+            size_hint: 1, None
+            id: layers_list
+            spacing: 0
+            height: sum([c.height for c in self.children])
+        Button:
+            id: add_layer_button
+            size_hint: 1, None
+            height: dp(25)
+            text: 'Add Layer'
+            on_press: root.add_layer()
+
+
+
+
+    StackLayout:
+        spacing: dp(5)
+        Label:
+            height: dp(25)
+            size_hint: 1, None
+            halign: "left"
+            valign: 'middle'
+            text_size: self.size
+            text: 'Metric Functions'
+        StackLayout:
+            id: metrics_list
+            height: sum([c.height for c in self.children])
+            size_hint: 1, None
+
+        Button:
+            height: dp(25)
+            size_hint: 1, None
+            text: 'Add Metric Function'
+            on_press: root.add_metric_function()
+        OutputField:
+            id: output_model
+            label_text: 'out Model'
+
+<LayerView>
+    size_hint: 1, None
+    height: dp(25)
+    cols: 3
+    rows: 1
+    Label:
+        height: dp(25)
+        size_hint: 1, None
+        halign: "left"
+        valign: 'middle'
+        text_size: self.size
+        text: root.layer_name
+    Button:
+        height: dp(25)
+        size_hint: 1, None
+        text: 'Edit'
+        on_press: root.open_edit()
+    Button:
+        size_hint: None, None
+        height: dp(25)
+        width: dp(25)
+        text: 'x'
+        on_press: root.remove()
+
+<MetricFunctionView>
+    size_hint: 1, None
+    height: dp(25)
+    cols: 3
+    rows: 1
+    TextInput:
+        height: dp(25)
+        size_hint: 1, None
+        text: root.name
+        on_text: root.name = args[1]
+    Button:
+        size_hint: None, None
+        height: dp(25)
+        width: dp(25)
+        text: 'x'
+        on_press: root.context.delete()
+

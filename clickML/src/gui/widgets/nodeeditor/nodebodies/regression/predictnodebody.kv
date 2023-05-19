@@ -1,0 +1,132 @@
+<PredictNodeBody>
+    width: dp(200)
+    height: dp(255)
+    InputField:
+        height: dp(10)
+        size_hint: 1, None
+        id: model_input
+        label_text: 'input'
+    GridLayout:
+        height: dp(25)
+        size_hint: 1, None
+        cols: 2
+        Label:
+            height: dp(25)
+            width: dp(110)
+            size_hint_x: None
+            text: 'from column  '
+            halign: "right"
+            valign: 'middle'
+            text_size: self.size
+        TextInput:
+            size_hint: 0.2, None
+            height: dp(28)
+            foreground_color: 255,255,255,1
+            background_normal: ''
+            background_color: 0, 0, 0, 1
+            id: from_column
+            on_text: root.from_column = args[1]
+            text: root.from_column
+    GridLayout:
+        height: dp(25)
+        size_hint: 1, None
+        cols: 2
+        Label:
+            height: dp(25)
+            width: dp(110)
+            size_hint_x: None
+            text: 'to column  '
+            halign: "right"
+            valign: 'middle'
+            text_size: self.size
+        TextInput:
+            size_hint: 0.2, None
+            height: dp(28)
+            foreground_color: 255,255,255,1
+            background_normal: ''
+            background_color: 0, 0, 0, 1
+            id: to_column
+            on_text: root.to_column = args[1]
+            text: root.to_column
+    GridLayout:
+        height: dp(25)
+        size_hint: 1, None
+        cols: 2
+        Label:
+            height: dp(25)
+            width: dp(110)
+            size_hint_x: None
+            text: 'from row  '
+            halign: "right"
+            valign: 'middle'
+            text_size: self.size
+        TextInput:
+            size_hint: 0.2, None
+            height: dp(28)
+            foreground_color: 255,255,255,1
+            background_normal: ''
+            background_color: 0, 0, 0, 1
+            id: from_row
+            on_text: root.from_row = args[1]
+            text: root.from_row
+    GridLayout:
+        height: dp(25)
+        size_hint: 1, None
+        cols: 2
+        Label:
+            height: dp(25)
+            width: dp(110)
+            size_hint_x: None
+            text: 'to row  '
+            halign: "right"
+            valign: 'middle'
+            text_size: self.size
+        TextInput:
+            size_hint: 0.2, None
+            height: dp(28)
+            foreground_color: 255,255,255,1
+            background_normal: ''
+            background_color: 0, 0, 0, 1
+            id: from_row
+            on_text: root.to_row = args[1]
+            text: root.to_row
+    GridLayout:
+        height: dp(25)
+        size_hint: 1, None
+        cols: 2
+        Label:
+            height: dp(25)
+            width: dp(40)
+            size_hint_x: None
+            text: 'type '
+            halign: "right"
+            valign: 'middle'
+            text_size: self.size
+        MultiSelection:
+            height: dp(25)
+            size_hint: 1, None
+            items: [['pred', 'predict'], ['pred_proba', 'predict_proba'], ['pred_log_proba', 'predict_log_proba']]
+            selected_item: root.prediction_type
+            on_selected_item: root.prediction_type = args[1]
+    OutputField:
+        height: dp(20)
+        size_hint: 1, None
+        id: output_regression
+        label_italic: True
+        label_text: 'further regression'
+    OutputField:
+        height: dp(20)
+        size_hint: 1, None
+        id: output_save_csv
+        label_italic: True
+        label_text: 'save to csv module'
+    OutputField:
+        height: dp(20)
+        size_hint: 1, None
+        id: output_plot
+        label_italic: True
+        label_text: 'plot module'
+
+
+
+

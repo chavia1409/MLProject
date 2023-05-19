@@ -1,0 +1,71 @@
+#: import DEFAULT common.models.component_descriptors.component_constants.DEFAULT
+<TextReaderNodeBody>
+    width: dp(200)
+    height: dp(190)
+    NodeBodyTextField:
+        height: dp(25)
+        size_hint: 1, None
+        label_text: 'file: '
+        field_text: root.file
+        on_field_text: root.file = args[1]
+    Button:
+        height: dp(25)
+        size_hint: 1, None
+        text: 'select file'
+        on_press:root.select_command.invoke(None)
+    GridLayout:
+        height: dp(25)
+        size_hint: 1, None
+        cols: 2
+        Label:
+            height: dp(25)
+            size_hint: 1.5, None
+            halign: "right"
+            valign: 'middle'
+            text_size: self.size
+            text: 'encoding  '
+        MultiSelection:
+            height: dp(25)
+            size_hint: 1, None
+            items: [[DEFAULT, 'default'], ['ascii', 'ascii'], ['utf_8', 'utf_8'], ['utf_7', 'utf_7'], ['utf_16', 'utf_16']]
+            selected_item: root.encoding
+            on_selected_item: root.encoding = args[1]
+    GridLayout:
+        size_hint: 1, None
+        height: dp(25)
+        cols: 2
+        Label:
+            height: dp(25)
+            size_hint: 1.5, None
+            halign: "right"
+            valign: 'middle'
+            text_size: self.size
+            text: 'newline mode  '
+        MultiSelection:
+            height: dp(25)
+            size_hint: 1, None
+            items: [[DEFAULT, 'default'], ['None', 'none'], ['', 'empty'], ['\n', '\\n'], ['\r', '\\r'], ['\r\n', '\\r\\n']]
+            selected_item: root.newline
+            on_selected_item: root.newline = args[1]
+    GridLayout:
+        height: dp(25)
+        size_hint: 1, None
+        cols: 2
+        Label:
+            height: dp(25)
+            size_hint: 0.4, None
+            halign: "right"
+            valign: 'middle'
+            text_size: self.size
+            text: 'errors  '
+        MultiSelection:
+            height: dp(25)
+            size_hint: 1, None
+            items: [[DEFAULT, 'default'], ['strict', 'strict'], ['backslashreplace', 'backslashreplace'], ['ignore', 'ignore'], ['namereplace', 'namereplace'], ['replace', 'replace'], ['xmlcharrefreplace', 'xmlcharrefreplace']]
+            selected_item: root.errors
+            on_selected_item: root.errors = args[1]
+    OutputField:
+        size_hint: 1, None
+        height: dp(20)
+        id: output_field
+        label_text: 'text output'

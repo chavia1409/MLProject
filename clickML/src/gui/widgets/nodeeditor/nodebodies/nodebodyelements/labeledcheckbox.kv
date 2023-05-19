@@ -1,0 +1,21 @@
+<LabeledCheckBox>
+    orientation: 'lr-tb'
+    size_hint: 1, None
+    height: dp(25)
+    MDCheckbox:
+        selected_color: (1,1,1,1)
+        unselected_color: (1,1,1,1)
+        size_hint: None, None
+        height: dp(25)
+        width: dp(25)
+        active: root.is_checked
+        on_active: root.is_checked = args[1]
+    Label:
+        height: dp(25)
+        size_hint: None, None
+        width: root.width - dp(30)
+        text: root.label_text
+        color: 1,1,1,1
+        halign: "left"
+        valign: 'middle'
+        text_size: self.size

@@ -1,0 +1,449 @@
+<GRUContent>
+    size_hint: 1, None
+    height: dp(450)
+    spacing: dp(5)
+    MDGridLayout:
+        cols:2
+
+        spacing:dp(30)
+        MDBoxLayout:
+            orientation: 'horizontal'
+            height: dp(30)
+            size_hint: 1, None
+            spacing:dp(15)
+            Label:
+                size_hint:1, None
+                height:dp(30)
+                text:"activation (optional): "
+
+            FocusWidget:
+                focus_color: (220 / 255, 220 / 255, 228 / 255, 1)
+                unfocus_color: (80/255,80/255,80/255,1)
+                size_hint:1, None
+                height: dp(30)
+
+                TextInput:
+                    id:activation_input
+                    size_hint: 1, None
+                    height: dp(30)
+                    canvas.before:
+                        Color:
+                            rgba:1,1,1,1
+                    halign: "center"
+                    text: str(root.activation)
+                    multiline: False
+                    background_normal:""
+                    background_color: (80/255,80/255,80/255,1)
+                    on_text_validate: root.set_activation()
+
+        MDBoxLayout:
+            orientation: 'horizontal'
+            height: dp(30)
+            size_hint: 1, None
+            spacing:dp(15)
+            Label:
+                size_hint:1, None
+                height:dp(30)
+                text:"kernel_initializer: "
+
+            FocusWidget:
+                focus_color: (220 / 255, 220 / 255, 228 / 255, 1)
+                unfocus_color: (80/255,80/255,80/255,1)
+                size_hint:1, None
+                height: dp(30)
+
+                TextInput:
+                    id:kernel_initializer_input
+                    size_hint: 1, None
+                    height: dp(30)
+                    canvas.before:
+                        Color:
+                            rgba:1,1,1,1
+                    halign: "center"
+                    text: str(root.kernel_initializer)
+                    multiline: False
+                    background_normal:""
+                    background_color: (80/255,80/255,80/255,1)
+                    on_text_validate: root.set_kernel_initializer()
+
+        MDBoxLayout:
+            orientation: 'horizontal'
+            height: dp(30)
+            size_hint: 1, None
+            spacing:dp(15)
+            Label:
+                size_hint:1, None
+                height:dp(30)
+                text:"recurrent_initializer: "
+
+            FocusWidget:
+                focus_color: (220 / 255, 220 / 255, 228 / 255, 1)
+                unfocus_color: (80/255,80/255,80/255,1)
+                size_hint:1, None
+                height: dp(30)
+
+                TextInput:
+                    id:recurrent_initializer_input
+                    size_hint: 1, None
+                    height: dp(30)
+                    canvas.before:
+                        Color:
+                            rgba:1,1,1,1
+                    halign: "center"
+                    text: str(root.recurrent_initializer)
+                    multiline: False
+                    background_normal:""
+                    background_color: (80/255,80/255,80/255,1)
+                    on_text_validate: root.set_recurrent_initializer()
+        MDBoxLayout:
+            orientation: 'horizontal'
+            height: dp(30)
+            size_hint: 1, None
+            spacing:dp(15)
+            Label:
+                size_hint:1, None
+                height:dp(30)
+                text:"bias_initializer: "
+
+            FocusWidget:
+                focus_color: (220 / 255, 220 / 255, 228 / 255, 1)
+                unfocus_color: (80/255,80/255,80/255,1)
+                size_hint:1, None
+                height: dp(30)
+
+                TextInput:
+                    id:bias_initializer_input
+                    size_hint: 1, None
+                    height: dp(30)
+                    canvas.before:
+                        Color:
+                            rgba:1,1,1,1
+                    halign: "center"
+                    text: str(root.bias_initializer)
+                    multiline: False
+                    background_normal:""
+                    background_color: (80/255,80/255,80/255,1)
+                    on_text_validate: root.set_bias_initializer()
+        MDBoxLayout:
+            orientation: 'horizontal'
+            height: dp(30)
+            size_hint: 1, None
+            spacing:dp(15)
+            Label:
+                size_hint:1, None
+                height:dp(30)
+                text:"kernel_regularizer: "
+
+            FocusWidget:
+                focus_color: (220 / 255, 220 / 255, 228 / 255, 1)
+                unfocus_color: (80/255,80/255,80/255,1)
+                size_hint:1, None
+                height: dp(30)
+
+                TextInput:
+                    id:kernel_regularizer_input
+                    size_hint: 1, None
+                    height: dp(30)
+                    canvas.before:
+                        Color:
+                            rgba:1,1,1,1
+                    halign: "center"
+                    text: str(root.kernel_regularizer)
+                    multiline: False
+                    background_normal:""
+                    background_color: (80/255,80/255,80/255,1)
+                    on_text_validate: root.set_kernel_regularizer()
+        MDBoxLayout:
+            orientation: 'horizontal'
+            height: dp(30)
+            size_hint: 1, None
+            spacing:dp(15)
+            Label:
+                size_hint:1, None
+                height:dp(30)
+                text:"recurrent_regularizer: "
+
+            FocusWidget:
+                focus_color: (220 / 255, 220 / 255, 228 / 255, 1)
+                unfocus_color: (80/255,80/255,80/255,1)
+                size_hint:1, None
+                height: dp(30)
+
+                TextInput:
+                    id:recurrent_regularizer_input
+                    size_hint: 1, None
+                    height: dp(30)
+                    canvas.before:
+                        Color:
+                            rgba:1,1,1,1
+                    halign: "center"
+                    text: str(root.recurrent_regularizer)
+                    multiline: False
+                    background_normal:""
+                    background_color: (80/255,80/255,80/255,1)
+                    on_text_validate: root.set_recurrent_regularizer()
+        MDBoxLayout:
+            orientation: 'horizontal'
+            height: dp(30)
+            size_hint: 1, None
+            spacing:dp(15)
+            Label:
+                size_hint:1, None
+                height:dp(30)
+                text:"bias_regularizer: "
+
+            FocusWidget:
+                focus_color: (220 / 255, 220 / 255, 228 / 255, 1)
+                unfocus_color: (80/255,80/255,80/255,1)
+                size_hint:1, None
+                height: dp(30)
+
+                TextInput:
+                    id:recurrent_bias_regularizer
+                    size_hint: 1, None
+                    height: dp(30)
+                    canvas.before:
+                        Color:
+                            rgba:1,1,1,1
+                    halign: "center"
+                    text: str(root.bias_regularizer)
+                    multiline: False
+                    background_normal:""
+                    background_color: (80/255,80/255,80/255,1)
+                    on_text_validate: root.set_bias_regularizer()
+        MDBoxLayout:
+            orientation: 'horizontal'
+            height: dp(30)
+            size_hint: 1, None
+            spacing:dp(15)
+            Label:
+                size_hint:1, None
+                height:dp(30)
+                text:"activity_regularizer: "
+
+            FocusWidget:
+                focus_color: (220 / 255, 220 / 255, 228 / 255, 1)
+                unfocus_color: (80/255,80/255,80/255,1)
+                size_hint:1, None
+                height: dp(30)
+
+                TextInput:
+                    id:activity_regularizer_input
+                    size_hint: 1, None
+                    height: dp(30)
+                    canvas.before:
+                        Color:
+                            rgba:1,1,1,1
+                    halign: "center"
+                    text: str(root.activity_regularizer)
+                    multiline: False
+                    background_normal:""
+                    background_color: (80/255,80/255,80/255,1)
+                    on_text_validate: root.set_activity_regularizer()
+        MDBoxLayout:
+            orientation: 'horizontal'
+            height: dp(30)
+            size_hint: 1, None
+            spacing:dp(15)
+            Label:
+                size_hint:1, None
+                height:dp(30)
+                text:"recurrent_activation: "
+
+            FocusWidget:
+                focus_color: (220 / 255, 220 / 255, 228 / 255, 1)
+                unfocus_color: (80/255,80/255,80/255,1)
+                size_hint:1, None
+                height: dp(30)
+
+                TextInput:
+                    id:recurrent_activation_input
+                    size_hint: 1, None
+                    height: dp(30)
+                    canvas.before:
+                        Color:
+                            rgba:1,1,1,1
+                    halign: "center"
+                    text: str(root.recurrent_activation)
+                    multiline: False
+                    background_normal:""
+                    background_color: (80/255,80/255,80/255,1)
+                    on_text_validate: root.set_recurrent_activation()
+        MDBoxLayout:
+            orientation: 'horizontal'
+            height: dp(30)
+            size_hint: 1, None
+            spacing:dp(15)
+            Label:
+                size_hint:1, None
+                height:dp(30)
+                text:"recurrent_constraint: "
+
+            FocusWidget:
+                focus_color: (220 / 255, 220 / 255, 228 / 255, 1)
+                unfocus_color: (80/255,80/255,80/255,1)
+                size_hint:1, None
+                height: dp(30)
+
+                TextInput:
+                    id:recurrent_constraint_input
+                    size_hint: 1, None
+                    height: dp(30)
+                    canvas.before:
+                        Color:
+                            rgba:1,1,1,1
+                    halign: "center"
+                    text: str(root.recurrent_constraint)
+                    multiline: False
+                    background_normal:""
+                    background_color: (80/255,80/255,80/255,1)
+                    on_text_validate: root.set_recurrent_constraint()
+        MDBoxLayout:
+            orientation: 'horizontal'
+            height: dp(30)
+            size_hint: 1, None
+            spacing:dp(15)
+            Label:
+                size_hint:1, None
+                height:dp(30)
+                text:"bias_constraint: "
+
+            FocusWidget:
+                focus_color: (220 / 255, 220 / 255, 228 / 255, 1)
+                unfocus_color: (80/255,80/255,80/255,1)
+                size_hint:1, None
+                height: dp(30)
+
+                TextInput:
+                    id:bias_constraint_input
+                    size_hint: 1, None
+                    height: dp(30)
+                    canvas.before:
+                        Color:
+                            rgba:1,1,1,1
+                    halign: "center"
+                    text: str(root.bias_constraint)
+                    multiline: False
+                    background_normal:""
+                    background_color: (80/255,80/255,80/255,1)
+                    on_text_validate: root.set_bias_constraint()
+        MDBoxLayout:
+            orientation: 'horizontal'
+            height: dp(30)
+            size_hint: 1, None
+            spacing:dp(15)
+            Label:
+                size_hint:1, None
+                height:dp(30)
+                text:"dropout: "
+
+            FocusWidget:
+                focus_color: (220 / 255, 220 / 255, 228 / 255, 1)
+                unfocus_color: (80/255,80/255,80/255,1)
+                size_hint:1, None
+                height: dp(30)
+
+                TextInput:
+                    id:dropout_input
+                    size_hint: 1, None
+                    height: dp(30)
+                    canvas.before:
+                        Color:
+                            rgba:1,1,1,1
+                    halign: "center"
+                    text: str(root.dropout)
+                    multiline: False
+                    background_normal:""
+                    background_color: (80/255,80/255,80/255,1)
+                    on_text_validate: root.set_dropout()
+        MDBoxLayout:
+            orientation: 'horizontal'
+            height: dp(30)
+            size_hint: 1, None
+            spacing:dp(15)
+            Label:
+                size_hint:1, None
+                height:dp(30)
+                text:"recurrent_dropout: "
+
+            FocusWidget:
+                focus_color: (220 / 255, 220 / 255, 228 / 255, 1)
+                unfocus_color: (80/255,80/255,80/255,1)
+                size_hint:1, None
+                height: dp(30)
+
+                TextInput:
+                    id:recurrent_dropout_input
+                    size_hint: 1, None
+                    height: dp(30)
+                    canvas.before:
+                        Color:
+                            rgba:1,1,1,1
+                    halign: "center"
+                    text: str(root.recurrent_dropout)
+                    multiline: False
+                    background_normal:""
+                    background_color: (80/255,80/255,80/255,1)
+                    on_text_validate: root.set_recurrent_dropout()
+
+            MDBoxLayout:
+                orientation: 'horizontal'
+                height: dp(30)
+                size_hint: 1, None
+                spacing:dp(10)
+                Label:
+                    size_hint:1, None
+                    height:dp(30)
+                    text:"units: "
+                    halign:"left"
+                FocusWidget:
+                    focus_color: (120 / 255, 120 / 255, 128 / 255, 1)
+                    unfocus_color: 0,0,0,0
+                    size_hint:None, None
+                    height: dp(30)
+                    width:dp(50)
+                    MDRectangleFlatIconButton:
+                        size_hint:None, None
+                        height: dp(30)
+                        width:dp(40)
+                        icon:"minus"
+                        line_color:0,0,0,0
+                        valign:"center"
+                        theme_text_color: "Custom"
+                        text_color: 1, 1, 1, 1
+                        on_press: root.units -= 1
+                FocusWidget:
+                    focus_color: (220 / 255, 220 / 255, 228 / 255, 1)
+                    unfocus_color: (80/255,80/255,80/255,1)
+                    size_hint:1, None
+                    height: dp(30)
+                    TextInput:
+                        id: units_input
+                        size_hint: 1, None
+                        height: dp(30)
+                        canvas.before:
+                            Color:
+                                rgba:1,1,1,1
+                        halign: "center"
+                        text: str(root.units)
+                        multiline: False
+                        background_normal:""
+                        background_color: (80/255,80/255,80/255,1)
+                        on_text_validate: root.set_units()
+                FocusWidget:
+                    focus_color: (120 / 255, 120 / 255, 128 / 255, 1)
+                    unfocus_color: 0,0,0,0
+                    size_hint:None, None
+                    height: dp(30)
+                    width:dp(40)
+                    MDRectangleFlatIconButton:
+                        size_hint:None, None
+                        height: dp(30)
+                        width:dp(40)
+                        height: dp(30)
+                        icon:"plus"
+                        anchor:"right"
+                        line_color:0,0,0,0
+                        theme_text_color: "Custom"
+                        text_color: 1, 1, 1, 1
+                        on_press: root.units += 1

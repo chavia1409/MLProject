@@ -1,0 +1,23 @@
+<NodeBodyTextField>
+    orientation: 'lr-tb'
+    size_hint: 1, None
+    height: dp(25)
+    Label:
+        id: label
+        height: dp(25)
+        size_hint: None, None
+        text: root.label_text
+        color: 1,1,1,1
+        width: root.label_width
+        halign: "left"
+        valign: 'bottom'
+        text_size: self.size
+    TextInput:
+        text: root.field_text
+        on_text: root.field_text = args[1]
+        halign: "left"
+        valign: 'middle'
+        size_hint: None, None
+        height: dp(28)
+        width: root.width - root.label_width
+        

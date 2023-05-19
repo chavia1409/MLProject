@@ -1,0 +1,87 @@
+#:import NodeEditorWidget gui.widgets.nodeeditor.nodeeditorwidget
+#:import TerminalWidget gui.widgets.terminalwidget
+#:import ComponentListWidget gui.widgets.componentlistwidget
+#:import style gui
+
+<EditorScreen>
+    canvas.before:
+        Color:
+            rgba: style.editor_background
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    GridLayout:
+        rows: 2
+        spacing: 1
+        StackLayout:
+            canvas:
+                Color:
+                    rgba: style.header_backgorund_color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            height: dp(50)
+            padding: 15
+            size_hint: 1, None
+
+            TextInput:
+                background_color: style.header_backgorund_color
+                background_normal: '(0,0,0,0)'
+                foreground_color: (1,1,1,1)
+                cursor_color: (1,1,1,1)
+                size_hint: 1, 1
+                width: 120
+                font_size: dp(16)
+                text: root.project_name
+                on_text: root.project_name = args[1]
+                padding_x:
+                    [self.center[0] - self._get_text_width(max(self._lines, key=len), self.tab_width, self._label_cached) / 2.0,0] if self.text else [self.center[0], 0]
+                # top, bottom
+                padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+            Widget:
+                size_hint: 1, None
+                height: dp(1)
+                canvas:
+                    Color:
+                        rgba: 0, 0, 0, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+        GridLayout:
+            size_hint: 1, 1
+            cols: 2
+            GridLayout:
+                size_hint: 4, 1
+                rows:2
+                NodeEditorWidget:
+
+                    size_hint: 2, 2
+                    id: node_editor
+                    context: root.node_editor_context
+                Splitter:
+                    strip_size: dp(5)
+                    sizable_from: 'top'
+                    TerminalWidget:
+                        id: terminal_widget
+                        canvas.before:
+                            Color:
+                                rgba: style.header_backgorund_color
+                            Rectangle:
+                                pos: self.pos
+                                size: self.size
+                        size_hint: 1, 1
+                        context: root.terminal_context
+
+            Splitter:
+                strip_size: dp(3)
+                sizable_from: 'left'
+                ComponentListWidget:
+                    id: ComponentList_widget
+                    canvas.before:
+                        Color:
+                            rgba: style.header_backgorund_color
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    size_hint: 1, 1
+

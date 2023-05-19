@@ -1,0 +1,12 @@
+#:import style gui
+<ConnectionLine>
+    on_touch_move:root.change_color_touch_move()
+    on_touch_up:root.change_color_touch_up()
+    canvas:
+        Color:
+            rgb: root.line_color
+        Line:
+            width: dp(2.5)
+            bezier:
+                (root.x1, root.y1, (root.x1 + root.x2) / 2., root.y1, (root.x1 + root.x2) / 2., root.y2, root.x2, root.y2)
+

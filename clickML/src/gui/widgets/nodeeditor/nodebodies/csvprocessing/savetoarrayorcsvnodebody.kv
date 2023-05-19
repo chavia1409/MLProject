@@ -1,0 +1,59 @@
+#: import DEFAULT common.models.component_descriptors.component_constants.DEFAULT
+<SaveToArrayOrCsvNodeBody>
+    width: dp(200)
+    height: dp(175)
+    InputField:
+        size_hint: 1, None
+        height: dp(10)
+        id: input_field
+        label_text: 'input'
+    GridLayout:
+        height: dp(25)
+        size_hint: 1, None
+        cols: 2
+        Label:
+            height: dp(25)
+            size_hint: 1, None
+            halign: "right"
+            valign: 'middle'
+            text_size: self.size
+            text: 'save to '
+        MultiSelection:
+            height: dp(25)
+            size_hint: 1, None
+            items: [[DEFAULT, 'to CSV'], ['To Array', 'to array']]
+            selected_item: root.ArrayOrCsv
+            on_selected_item: root.ArrayOrCsv = args[1]
+    NodeBodyTextField:
+        size_hint: 1, None
+        height: dp(25)
+        label_text: '    path '
+        field_text: root.targetFilePath
+        on_field_text: root.targetFilePath = args[1]
+    Button:
+        height: dp(25)
+        size_hint: 1, None
+        text: 'select path'
+        on_press: root.context.select_path()
+    GridLayout:
+        height: dp(25)
+        size_hint: 1, None
+        cols: 2
+        Label:
+            height: dp(25)
+            size_hint: 1, None
+            halign: "right"
+            valign: 'middle'
+            text_size: self.size
+            text: 'indexing '
+        MultiSelection:
+            height: dp(25)
+            size_hint: 1, None
+            items: [[DEFAULT, 'true'], ['False', 'false']]
+            selected_item: root.indexing
+            on_selected_item: root.indexing = args[1]
+    OutputField:
+        height: dp(20)
+        size_hint: 1, None
+        id: output_field
+        label_text: 'array output'

@@ -1,0 +1,85 @@
+<TrainMultivariateLinearRegressionNodeBody>
+    width: '200dp'
+    height: '175dp'
+    InputField:
+        height: '25dp'
+        size_hint: 1, None
+        id: data_input
+        label_text: 'data input'
+    InputField:
+        height: '25dp'
+        size_hint: 1, None
+        id: target_input
+        label_text: 'target input'
+    GridLayout:
+        height: '25dp'
+        size_hint: 1, None
+        cols: 2
+        Label:
+            height: '25dp'
+            size_hint: 1, None
+            text: '(test size between 0.0 and 1.0):'
+            halign: "left"
+            valign: 'middle'
+            text_size: self.size
+        TextInput:
+            height: '25dp'
+            size_hint: 1, None
+            foreground_color: 255,255,255,1
+            background_normal: ''
+            background_color: 0, 0, 0, 1
+            id: test_size
+            on_text: root.test_size = test_size
+    GridLayout:
+        height: '25dp'
+        size_hint: 1, None
+        cols: 2
+        Label:
+            height: '25dp'
+            size_hint: 1, None
+            text: '(train size between 0.0 and 1.0):'
+            halign: "left"
+            valign: 'middle'
+            text_size: self.size
+        TextInput:
+            height: '25dp'
+            size_hint: 1, None
+            foreground_color: 255,255,255,1
+            background_normal: ''
+            background_color: 0, 0, 0, 1
+            id: train_size
+            on_text: root.train_size = train_size
+    GridLayout:
+        height: '25dp'
+        size_hint: 1, None
+        cols: 2
+        Label:
+            height: '25dp'
+            size_hint: 1, None
+            text: '(random int):'
+            halign: "left"
+            valign: 'middle'
+            text_size: self.size
+        TextInput:
+            height: '25dp'
+            size_hint: 1, None
+            foreground_color: 255,255,255,1
+            background_normal: ''
+            background_color: 0, 0, 0, 1
+            id: random_int
+            on_text: root.random_int = random_int
+    OutputField:
+        height: '25dp'
+        size_hint: 1, None
+        id: output_regression
+        label_text: 'output regression'
+    OutputField:
+        height: '25dp'
+        size_hint: 1, None
+        id: output_save_csv
+        label_text: 'output save csv'
+    OutputField:
+        height: '25dp'
+        size_hint: 1, None
+        id: output_plot
+        label_text: 'output plot'

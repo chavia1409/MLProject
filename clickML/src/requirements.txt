@@ -1,0 +1,26 @@
+asttokens==2.0.5
+certifi==2022.6.15
+charset-normalizer==2.1.0
+docutils==0.18.1
+executing==0.8.3
+idna==3.3
+Kivy==2.1.0
+Kivy-Garden==0.1.5
+kivymd @ git+https://github.com/HeaTTheatR/KivyMD.git@d398f392ce30adb37ac411467556e31689645482
+Pillow==9.1.1
+plyer==2.0.0
+pure-eval==0.2.2
+Pygments==2.12.0
+pyobjus~=1.2.1; sys_platform == 'darwin'
+requests==2.28.1
+six==1.16.0
+urllib3==1.26.9
+varname==0.8.3
+
+numpy~=1.23.0
+scikit-learn~=1.1.1
+common~=0.1.2
+keras~=2.9.0
+matplotlib~=3.5.2
+pandas~=1.4.2
+tensorflow==3.9

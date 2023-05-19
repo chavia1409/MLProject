@@ -1,0 +1,31 @@
+<SetParamsNodeBody>
+    width: dp(170)
+    height: dp(123)
+    InputField:
+        height: dp(10)
+        size_hint: 1, None
+        id: regression_input
+        label_text: 'regression input'
+    Label:
+        height: dp(25)
+        size_hint: 1, None
+        italic: True
+        text: 'setterArgument'
+        halign: "center"
+        valign: 'middle'
+        text_size: self.size
+    TextInput:
+        size_hint: 1, None
+        height: dp(28)
+        foreground_color: 255,255,255,1
+        background_normal: ''
+        background_color: 0, 0, 0, 1
+        id: setter_argument
+        on_text: root.setterArgument = args[1]
+        text: root.setterArgument
+    OutputField:
+        height: dp(25)
+        size_hint: 1, None
+        id: output
+        label_italic: True
+        label_text: 'output'

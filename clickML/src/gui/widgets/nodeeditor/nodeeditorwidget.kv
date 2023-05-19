@@ -1,0 +1,19 @@
+#:import BinWidget gui.widgets.nodeeditor.binwidget
+
+<NodeEditorWidget>
+    BetterScrollView:
+        scroll_y: 0
+        size_hint: 1, 1
+        RelativeLayout:
+            size_hint: None, None
+            id: node_space
+            height: 10000#max([c.x for c in self.children])
+            width: 10000#max([c.y for c in self.children])
+            Widget:
+
+    AnchorLayout:
+        padding: dp(5)
+        anchor_x: 'right'
+        anchor_y: 'bottom'
+        BinWidget:
+            command: root.delete_node_command

@@ -1,0 +1,130 @@
+#: import hex kivy.utils.get_color_from_hex
+#don't forget to divide by 255 in rgba
+<TerminalWidget>
+    GridLayout:
+        rows: 2
+
+        MDBoxLayout:
+            orientation : 'horizontal'
+            size_hint: 1, None
+            height: dp(40)
+            spacing:dp(2)
+            FocusWidget:
+                focus_color: root.gray
+                unfocus_color: 0,0,0,0
+                size_hint:1,1
+                MDRectangleFlatIconButton:
+                    size_hint:1,1
+                    id:save
+                    #icon: "content-save-edit-outline"
+                    icon:"content-save-outline"
+                    text:'Save'
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+                    on_press: root.save_command.invoke(None)
+                    on_press: root.button_color_touch_down('save')
+                    on_release:root.button_color_touch_up('save')
+                    line_color:root.line_save
+
+            FocusWidget:
+                focus_color: root.gray
+                unfocus_color: 0,0,0,0
+                size_hint:1,1
+                MDRectangleFlatIconButton:
+                    size_hint:1,1
+                    id:load
+                    text:'Load'
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+                    icon:"folder-download-outline"
+                    on_press: root.load_command.invoke(None)
+                    on_press: root.button_color_touch_down('load')
+                    on_release:root.button_color_touch_up('load')
+                    background_color:(0,0,0,0)
+                    line_color:root.line_load
+            FocusWidget:
+                focus_color: root.gray
+                unfocus_color: 0,0,0,0
+                size_hint:1,1
+                MDRectangleFlatIconButton:
+                    size_hint:1,1
+                    id:translate
+                    disabled:True
+                    text:"Translate"
+                    theme_text_color: "Custom"
+                    #icon:"transfer"
+                    icon:"head-sync-outline"
+                    text_color: 1, 1, 1, 1
+                    on_press: root.translate_command.invoke(None)
+                    on_press: root.button_color_touch_down('translate')
+                    on_release:root.button_color_touch_up('translate')
+                    background_color:(0,0,0,0)
+                    line_color:root.line_translate
+            FocusWidget:
+                focus_color: root.gray
+                unfocus_color: 0,0,0,0
+                size_hint:1,1
+
+                MDRectangleFlatIconButton:
+                    size_hint:1,1
+                    id:run
+                    text:"Run"
+                    theme_text_color: "Custom"
+                    icon:"run-fast"
+                    text_color: 1, 1, 1, 1
+                    on_press: root.run_command.invoke(None)
+                    on_press: root.button_color_touch_down('run')
+                    on_release:root.button_color_touch_up('run')
+                    background_color:(0,0,0,0)
+                    disabled:True
+                    line_color:root.line_run
+            FocusWidget:
+                focus_color: root.gray
+                unfocus_color: 0,0,0,0
+                size_hint:1,1
+                MDRectangleFlatIconButton:
+                    size_hint:1,1
+                    id:preview
+                    text:"Preview"
+                    icon: "language-python"
+                    disabled:True
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+                    on_press: root.preview_command.invoke(None)
+                    on_press: root.button_color_touch_down('preview')
+                    on_release:root.button_color_touch_up('preview')
+                    background_color:(0,0,0,0)
+                    line_color:root.line_preview
+
+
+        MDBoxLayout:
+            size_hint: 1, 1
+            padding: dp(25)
+            canvas.before:
+                Color:
+                    rgba: root.line_terminal
+                Line:
+                    width: dp(1.5)
+                    rectangle: self.x, self.y , self.width, self.height-dp(4)
+
+            ScrollView:
+                id: output_scroll
+                size_hint: 1, 1
+                bar_width: dp(5)
+                BoxLayout:
+                    size_hint: None, None
+                    size: self.size
+                    orientation : 'vertical'
+                    padding: dp(25)
+                    id: output_stack
+                    height: sum([c.height for c in self.children]) + dp(50)
+                    spacing: 0
+
+<TerminalOutputLabel>
+    size_hint: 1, None
+    font_size: dp(15)
+    halign: "left"
+    valign: 'top'
+    text_size: self.size
+    height: self.texture_size[1]
+<FucusWidget>
